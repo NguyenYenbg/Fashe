@@ -1,0 +1,13 @@
+.navbar {
+  &_nav {
+    list-style: none;
+    & li {
+      display: inline-block;
+      & a {
+        color: black;
+        font-size: 20px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
