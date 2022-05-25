@@ -1,0 +1,40 @@
+<div class="shop">
+  <div class="shop__header">
+    <img
+      src="https://preview.colorlib.com/theme/fashe/images/xheading-pages-02.jpg.pagespeed.ic.GkG7EKvIlv.webp"
+      alt=""
+    />
+    <div class="shop__header-content">
+      <h3>WOMAN</h3>
+      <p>New Arrivals Women Collection 2018</p>
+    </div>
+  </div>
+
+  <div class="shop__body container">
+    <div class="shop__body-left">
+      <div class="shop__body-left-search">
+        <input type="text" placeholder="Search products ..." />
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="shop__body-left-category">
+        <h5>Categories</h5>
+        <div class="shop__body-left-category__list">
+          <div class="shop__body-left-category__item">Woman</div>
+          <div class="shop__body-left-category__item">Men</div>
+          <div class="shop__body-left-category__item">Kids</div>
+          <div class="shop__body-left-category__item">Accesories</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop__body-right">
+      <div class="shop__body-right__list">
+        <div class="shop__body-right__item" *ngFor="let product of products">
+          <img src="{{ product.image }}" alt="" />
+          <h5>{{ product.title }}</h5>
+          <p>{{ product.price }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 .navbar {
+  padding: 30px 40px;
   &_nav {
     list-style: none;
     & li {
@@ -6,7 +7,13 @@
       & a {
         color: black;
         font-size: 20px;
-        margin-right: 10px;
+        margin: 0 20px;
+        &:hover {
+          color: #e65540;
+        }
+        &.active {
+          color: #e65540;
+        }
       }
     }
   }

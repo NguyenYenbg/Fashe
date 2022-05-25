@@ -10,9 +10,10 @@ import { PaginationComponent } from './components/commons/pagination/pagination.
 import { ProductCardComponent } from './components/commons/product-card/product-card.component';
 import { HomeComponent } from './components/screens/home/home.component';
 import { NotFoundComponent } from './components/screens/not-found/not-found.component';
+import { ShopComponent } from './components/screens/shop/shop.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, PaginationComponent, ProductCardComponent, HomeComponent, NotFoundComponent],
+  declarations: [AppComponent, NavbarComponent, FooterComponent, PaginationComponent, ProductCardComponent, HomeComponent, NotFoundComponent, ShopComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
