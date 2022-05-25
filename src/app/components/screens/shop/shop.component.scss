@@ -79,11 +79,15 @@
         & h5 {
           color: black;
           padding-top: 10px;
+          cursor: pointer;
           display: -webkit-box;
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
           -webkit-line-clamp: 1;
+          &:hover {
+            color: #e65540;
+          }
         }
         & p {
           margin-top: 10px;

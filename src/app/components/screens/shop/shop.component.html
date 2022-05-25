@@ -31,8 +31,8 @@
       <div class="shop__body-right__list">
         <div class="shop__body-right__item" *ngFor="let product of products">
           <img src="{{ product.image }}" alt="" />
-          <h5>{{ product.title }}</h5>
-          <p>{{ product.price }}</p>
+          <h5 routerLink="/products/{{ product.id }}">{{ product.title }}</h5>
+          <p>{{ product.price | currency: "USD" }}</p>
         </div>
       </div>
     </div>
