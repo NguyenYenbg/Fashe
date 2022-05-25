@@ -17,6 +17,7 @@
         font-size: 50px;
         font-weight: 600;
         margin-bottom: 10px;
+        text-transform: uppercase;
       }
       & p {
         font-size: 20px;
@@ -35,6 +36,7 @@
         margin: 20px 10px;
         & input {
           width: 90%;
+          cursor: text;
         }
         & i {
           width: 10%;
@@ -51,6 +53,11 @@
         }
         &__item {
           margin-bottom: 10px;
+          text-transform: capitalize;
+          &:hover {
+            color: #e65540;
+            cursor: pointer;
+          }
         }
       }
     }

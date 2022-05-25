@@ -22,4 +22,10 @@ export class ProductService {
       config.apiUrl + `products/${id}`
     ) as Observable<SingleProduct>;
   }
+
+  getCategories(): Observable<any> {
+    return this.http.get(
+      config.apiUrl + `products/categories`
+    ) as Observable<any>;
+  }
 }

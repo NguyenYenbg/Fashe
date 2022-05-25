@@ -5,8 +5,8 @@
       alt=""
     />
     <div class="shop__header-content">
-      <h3>WOMAN</h3>
-      <p>New Arrivals Women Collection 2018</p>
+      <h3>Product</h3>
+      <p>New Arrivals Products Collection 2022</p>
     </div>
   </div>
 
@@ -18,11 +18,11 @@
       </div>
       <div class="shop__body-left-category">
         <h5>Categories</h5>
-        <div class="shop__body-left-category__list">
-          <div class="shop__body-left-category__item">Woman</div>
-          <div class="shop__body-left-category__item">Men</div>
-          <div class="shop__body-left-category__item">Kids</div>
-          <div class="shop__body-left-category__item">Accesories</div>
+        <div
+          class="shop__body-left-category__list"
+          *ngFor="let category of categories"
+        >
+          <div class="shop__body-left-category__item">{{ category }}</div>
         </div>
       </div>
     </div>

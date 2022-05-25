@@ -10,15 +10,22 @@ import { ProductService } from './../../../services/product.service';
 })
 export class ShopComponent implements OnInit {
   products: MultiProduct;
+  categories: any;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
+    this.getCategories();
   }
   getProducts() {
     this.productService.getProducts().subscribe((res) => {
       this.products = res;
+    });
+  }
+  getCategories() {
+    this.productService.getCategories().subscribe((res) => {
+      this.categories = res;
     });
   }
 }
