@@ -13,7 +13,12 @@
   <div class="shop__body container">
     <div class="shop__body-left">
       <div class="shop__body-left-search">
-        <input type="text" placeholder="Search products ..." />
+        <input
+          type="text"
+          placeholder="Search products ..."
+          #search
+          (keyup)="onKeyUp(search.value)"
+        />
         <i class="fas fa-search"></i>
       </div>
       <div class="shop__body-left-category">
@@ -29,7 +34,7 @@
 
     <div class="shop__body-right">
       <div class="shop__body-right__list">
-        <div class="shop__body-right__item" *ngFor="let product of products">
+        <div class="shop__body-right__item" *ngFor="let product of filtered">
           <img src="{{ product.image }}" alt="" />
           <h5 routerLink="/products/{{ product.id }}">{{ product.title }}</h5>
           <p>{{ product.price | currency: "USD" }}</p>

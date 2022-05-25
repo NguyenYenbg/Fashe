@@ -34,6 +34,7 @@
         border: 1px solid #bebebe;
         padding: 10px;
         margin: 20px 10px;
+        border-radius: 3px;
         & input {
           width: 90%;
           cursor: text;
@@ -46,13 +47,13 @@
       &-category {
         margin: 10px;
         & h5 {
-          font-size: 22px;
+          font-size: 25px;
           font-weight: 600;
-          margin-bottom: 10px;
-          margin-top: 20px;
+          margin-bottom: 15px;
+          margin-top: 30px;
         }
         &__item {
-          margin-bottom: 10px;
+          margin-bottom: 14px;
           text-transform: capitalize;
           &:hover {
             color: #e65540;
@@ -79,7 +80,7 @@
         & img {
           width: 100%;
           padding: 20px;
-          height: 300px;
+          height: 290px;
           object-fit: contain;
           border-radius: 3px;
         }

@@ -9,7 +9,8 @@ import { ProductService } from './../../../services/product.service';
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  products: MultiProduct;
+  products: any;
+  filtered: any;
   categories: any;
 
   constructor(private productService: ProductService) {}
@@ -18,14 +19,20 @@ export class ShopComponent implements OnInit {
     this.getProducts();
     this.getCategories();
   }
+
   getProducts() {
     this.productService.getProducts().subscribe((res) => {
-      this.products = res;
+      this.products = this.filtered = res;
     });
   }
   getCategories() {
     this.productService.getCategories().subscribe((res) => {
       this.categories = res;
     });
+  }
+  onKeyUp(value: string) {
+    this.filtered = this.products.filter((item) =>
+      item.title.toLocaleLowerCase().includes(value.trim().toLocaleLowerCase())
+    );
   }
 }
