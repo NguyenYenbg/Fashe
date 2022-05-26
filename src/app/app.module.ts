@@ -12,10 +12,11 @@ import { HomeComponent } from './components/screens/home/home.component';
 import { NotFoundComponent } from './components/screens/not-found/not-found.component';
 import { ShopComponent } from './components/screens/shop/shop.component';
 import { ProductDetailComponent } from './components/screens/product-detail/product-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent, PaginationComponent, ProductCardComponent, HomeComponent, NotFoundComponent, ShopComponent, ProductDetailComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
