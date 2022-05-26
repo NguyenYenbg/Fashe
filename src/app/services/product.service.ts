@@ -28,4 +28,10 @@ export class ProductService {
       config.apiUrl + `products/categories`
     ) as Observable<any>;
   }
+
+  getProductByCategory(category: string): Observable<MultiProduct> {
+    return this.http.get(
+      config.apiUrl + `products/category/${category}`
+    ) as Observable<MultiProduct>;
+  }
 }
