@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MultiProduct } from 'src/app/_models/multi-product';
 import { SingleProduct } from 'src/app/_models/single-product';
 import { ProductService } from './../../../services/product.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-shop',
@@ -13,11 +14,18 @@ export class ShopComponent implements OnInit {
   filtered: any;
   categories: any;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      /** spinner ends after 03 seconds */
+      this.spinner.hide();
+    }, 2000);
     this.getProducts();
-    this.getCategories();
   }
 
   getProducts() {

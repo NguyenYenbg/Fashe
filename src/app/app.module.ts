@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,10 +13,28 @@ import { NotFoundComponent } from './components/screens/not-found/not-found.comp
 import { ShopComponent } from './components/screens/shop/shop.component';
 import { ProductDetailComponent } from './components/screens/product-detail/product-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, PaginationComponent, ProductCardComponent, HomeComponent, NotFoundComponent, ShopComponent, ProductDetailComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    PaginationComponent,
+    ProductCardComponent,
+    HomeComponent,
+    NotFoundComponent,
+    ShopComponent,
+    ProductDetailComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+    NgxSpinnerModule,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent],
 })

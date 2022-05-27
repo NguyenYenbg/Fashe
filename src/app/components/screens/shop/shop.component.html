@@ -1,3 +1,4 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
 <div class="shop">
   <div class="shop__header">
     <img
@@ -10,35 +11,26 @@
     </div>
   </div>
 
+  <!-- all products -->
   <div class="shop__body container">
-    <div class="shop__body-left">
-      <div class="shop__body-left-search">
-        <input
-          type="text"
-          placeholder="Search products ..."
-          #search
-          (keyup)="onKeyUp(search.value)"
-        />
-        <i class="fas fa-search"></i>
-      </div>
-      <div class="shop__body-left-category">
-        <h5>Categories</h5>
-        <div
-          class="shop__body-left-category__list"
-          *ngFor="let category of categories"
-        >
-          <div class="shop__body-left-category__item">{{ category }}</div>
-        </div>
-      </div>
+    <div class="shop__body-search">
+      <input
+        type="text"
+        placeholder="Search products ..."
+        #search
+        (keyup)="onKeyUp(search.value)"
+      />
+      <i class="fas fa-search"></i>
     </div>
-
-    <div class="shop__body-right">
-      <div class="shop__body-right__list">
-        <div class="shop__body-right__item" *ngFor="let product of filtered">
+    <div class="shop__body-list">
+      <div class="shop__body-item" *ngFor="let product of filtered">
+        <div class="shop__body-item--img">
           <img src="{{ product.image }}" alt="" />
-          <h5 routerLink="/products/{{ product.id }}">{{ product.title }}</h5>
-          <p>{{ product.price | currency: "USD" }}</p>
+          <div class="overlay"></div>
+          <button>Add to cart</button>
         </div>
+        <h5 routerLink="/products/{{ product.id }}">{{ product.title }}</h5>
+        <p>{{ product.price | currency: "USD" }}</p>
       </div>
     </div>
   </div>
