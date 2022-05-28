@@ -27,12 +27,13 @@
           <button>Add to Cart</button>
         </div>
 
-        <div class="product-detail__desc">
-          Description:
-          <p>
-            {{ product.description }}
-          </p>
-        </div>
+        <ngb-accordion [closeOthers]="true" activeIds="static-1">
+          <ngb-panel id="static-1" title="Description:">
+            <ng-template ngbPanelContent>
+              {{ product.description }}
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
 
         <div class="back-products">
           <button class="btn btn-link pl-0" routerLink="../">
