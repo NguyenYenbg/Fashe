@@ -1,1 +1,7 @@
-<p>product-card works!</p>
+<div class="shop__body-item--img">
+  <img src="{{ data.image }}" alt="" />
+  <div class="overlay"></div>
+  <button>Add to cart</button>
+</div>
+<h5 routerLink="/products/{{ data.id }}">{{ data.title }}</h5>
+<p>{{ data.price | currency: "USD" }}</p>

@@ -24,13 +24,7 @@
     </div>
     <div class="shop__body-list">
       <div class="shop__body-item" *ngFor="let product of filtered">
-        <div class="shop__body-item--img">
-          <img src="{{ product.image }}" alt="" />
-          <div class="overlay"></div>
-          <button>Add to cart</button>
-        </div>
-        <h5 routerLink="/products/{{ product.id }}">{{ product.title }}</h5>
-        <p>{{ product.price | currency: "USD" }}</p>
+        <app-product-card [data]="product"></app-product-card>
       </div>
     </div>
   </div>

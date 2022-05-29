@@ -12,9 +12,14 @@
       >
     </li>
     <li><a routerLink="/products" routerLinkActive="active">Shop</a></li>
+
+    <li *ngFor="let category of categories">
+      <a routerLink="/{{ category }}" routerLinkActive="active">{{
+        category
+      }}</a>
+    </li>
+
     <li><a routerLink="/cart" routerLinkActive="active">Cart</a></li>
-    <li><a routerLink="/blog" routerLinkActive="active">Blog</a></li>
-    <li><a routerLink="/about" routerLinkActive="active">About</a></li>
   </ul>
   <div class="navbar_right">
     <img src="" alt="" />

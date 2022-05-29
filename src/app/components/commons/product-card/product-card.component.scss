@@ -1,0 +1,80 @@
+.shop {
+  &__body {
+    &-item {
+      width: calc(33.3333% - 30px);
+      box-shadow: 2px 2px 7px #888888;
+      margin: 15px;
+      &--img {
+        position: relative;
+        & img {
+          width: 100%;
+          padding: 50px;
+          height: 290px;
+          object-fit: contain;
+          border-radius: 3px;
+        }
+        & button {
+          position: relative;
+          background-color: #fff;
+          text-transform: uppercase;
+          border-radius: 23px;
+          padding: 7px 20px;
+          width: 50%;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #e65540;
+          &:hover {
+            background-color: #e65540;
+            color: #fff;
+          }
+        }
+        &:hover .overlay {
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          background: rgb(0, 0, 0, 0.1);
+
+          filter: brightness(50%);
+          -o-filter: brightness(50%);
+          -ms-filter: brightness(50%);
+          -moz-filter: brightness(50%);
+          -webkit-filter: brightness(50%);
+        }
+        &:hover button {
+          display: block;
+          animation-name: animation1;
+          animation-duration: 0.5s;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+  }
+}
+h5 {
+  color: black;
+  padding: 0 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  &:hover {
+    color: #e65540;
+  }
+}
+p {
+  padding: 0 15px;
+  margin-top: 10px;
+}
+@keyframes animation1 {
+  from {
+    bottom: 0px;
+  }
+  to {
+    bottom: 30px;
+  }
+}

@@ -12,7 +12,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ShopComponent implements OnInit {
   products: any;
   filtered: any;
-  categories: any;
 
   constructor(
     private productService: ProductService,
@@ -31,11 +30,6 @@ export class ShopComponent implements OnInit {
   getProducts() {
     this.productService.getProducts().subscribe((res) => {
       this.products = this.filtered = res;
-    });
-  }
-  getCategories() {
-    this.productService.getCategories().subscribe((res) => {
-      this.categories = res;
     });
   }
   onKeyUp(value: string) {
