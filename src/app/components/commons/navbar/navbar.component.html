@@ -13,18 +13,25 @@
     </li>
     <li><a routerLink="/products" routerLinkActive="active">Shop</a></li>
 
-    <li *ngFor="let category of categories">
-      <a routerLink="/{{ category }}" routerLinkActive="active">{{
-        category
-      }}</a>
-    </li>
+    <!-- <li *ngFor="let category of categories">
+      <a
+        routerLink="/products/category/{{ category }}"
+        routerLinkActive="active"
+        >{{ category }}</a
+      >
+    </li> -->
 
     <li><a routerLink="/cart" routerLinkActive="active">Cart</a></li>
+    <li><a routerLink="/blog" routerLinkActive="active">Blog</a></li>
   </ul>
+
   <div class="navbar_right">
     <img src="" alt="" />
-    <div class="navbar_right-cart">
-      <i class="fas fa-cart-plus"></i>
+    <div class="navbar_right-cart" routerLink="cart">
+      <i style="font-size: 30px" class="fas fa-cart-plus"></i>
+      <div style="font-size: 10px" class="badge bg-danger">
+        {{ totalItem }}
+      </div>
     </div>
   </div>
 </div>

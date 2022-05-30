@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -8,15 +8,15 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  categories: any;
-  constructor(private productService: ProductService, private router: Router) {}
+  public totalItem: number = 0;
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
-    this.getCategories();
-  }
-  getCategories() {
-    this.productService.getCategories().subscribe((res) => {
-      this.categories = res;
+    this.cartService.getProducts().subscribe((res) => {
+      this.totalItem = res.length;
     });
   }
 }

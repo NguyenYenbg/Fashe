@@ -1,7 +1,11 @@
 .navbar {
   padding: 30px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   &_nav {
     list-style: none;
+    margin-bottom: 0;
     & > li {
       display: inline-block;
       & a {
@@ -16,6 +20,14 @@
         &.active {
           color: #e65540;
         }
+      }
+    }
+  }
+  &_right {
+    &-cart {
+      color: white;
+      & i {
+        color: black;
       }
     }
   }

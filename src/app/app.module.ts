@@ -14,6 +14,9 @@ import { ShopComponent } from './components/screens/shop/shop.component';
 import { ProductDetailComponent } from './components/screens/product-detail/product-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CartComponent } from './components/screens/cart/cart.component';
+import { LimitToPipe } from './pipes/limit-to.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NotFoundComponent,
     ShopComponent,
     ProductDetailComponent,
+    CartComponent,
+    LimitToPipe,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +38,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     NgbModule,
     NgxSpinnerModule,
+    FormsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
