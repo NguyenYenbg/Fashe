@@ -1,6 +1,7 @@
 import { SingleProduct } from './single-product';
 
 export interface MultiProduct {
-  products: SingleProduct[];
+  [x: string]: number;
+  products: any;
   productsCount: number;
 }

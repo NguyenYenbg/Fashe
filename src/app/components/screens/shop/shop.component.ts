@@ -16,6 +16,8 @@ export class ShopComponent implements OnInit {
   public filterCategory: any;
   searchKey: string = '';
   public searchTerm!: string;
+  totalLength: number;
+  page: number = 1;
 
   constructor(
     private productService: ProductService,
@@ -33,6 +35,7 @@ export class ShopComponent implements OnInit {
     this.productService.getProducts().subscribe((res) => {
       this.productList = res;
       this.filterCategory = res;
+      this.totalLength = res.length;
       this.productList.forEach((a: any) => {
         if (
           a.category === "women's clothing" ||
