@@ -20,6 +20,7 @@ import { LimitToPipe } from './pipes/limit-to.pipe';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
+import { ContactComponent } from './components/screens/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
     ProductDetailComponent,
     CartComponent,
     LimitToPipe,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
