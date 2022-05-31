@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "yennt44-hn22-fr-angular-01": {
+      "hosting": {
+        "fashe": [
+          "yennt44-hn22-fr-angular-01"
+        ]
+      }
+    }
+  }
+}
