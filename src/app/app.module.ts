@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,6 +19,7 @@ import { CartComponent } from './components/screens/cart/cart.component';
 import { LimitToPipe } from './pipes/limit-to.pipe';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxSpinnerModule,
     FormsModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

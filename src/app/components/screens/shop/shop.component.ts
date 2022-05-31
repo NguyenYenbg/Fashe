@@ -4,7 +4,6 @@ import { SingleProduct } from 'src/app/_models/single-product';
 import { ProductService } from './../../../services/product.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CartService } from 'src/app/services/cart.service';
-import { LimitToPipe } from 'src/app/pipes/limit-to.pipe';
 
 @Component({
   selector: 'app-shop',
