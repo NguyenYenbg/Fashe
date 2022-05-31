@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { ContactComponent } from './components/screens/contact/contact.component';
+import { AboutComponent } from './components/screens/about/about.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ContactComponent } from './components/screens/contact/contact.component
     CartComponent,
     LimitToPipe,
     ContactComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
