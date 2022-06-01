@@ -4,9 +4,12 @@ import { AboutComponent } from './components/screens/about/about.component';
 import { CartComponent } from './components/screens/cart/cart.component';
 import { ContactComponent } from './components/screens/contact/contact.component';
 import { HomeComponent } from './components/screens/home/home.component';
+import { LoginComponent } from './components/screens/login/login.component';
 import { NotFoundComponent } from './components/screens/not-found/not-found.component';
 import { ProductDetailComponent } from './components/screens/product-detail/product-detail.component';
+import { ResetPasswordComponent } from './components/screens/reset-password/reset-password.component';
 import { ShopComponent } from './components/screens/shop/shop.component';
+import { SignupComponent } from './components/screens/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -37,6 +40,18 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
+  {
+    path: 'resetPassword',
+    component: ResetPasswordComponent,
   },
   {
     path: '**',

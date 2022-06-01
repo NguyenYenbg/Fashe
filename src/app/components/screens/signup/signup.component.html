@@ -1,0 +1,69 @@
+<div class="container signup">
+  <div class="signup-img">
+    <img src="./../../../../assets/login-icon.webp" alt="" />
+  </div>
+  <form [formGroup]="signUpForm">
+    <h2>Sign Up</h2>
+
+    <!-- username -->
+    <div class="signup-control">
+      <i class="fas fa-user"></i>
+      <input
+        type="text"
+        formControlName="userName"
+        aria-describedby="emailHelp"
+        placeholder="Username"
+      />
+    </div>
+    <div class="message" *ngIf="userName.touched && userName.errors">
+      <ng-container *ngIf="userName.errors.required"
+        >Username is required</ng-container
+      >
+      <ng-container *ngIf="userName.errors.minlength"
+        >Min-length is
+        {{ userName.errors.minlength.requiredLength }}</ng-container
+      >
+      <ng-container *ngIf="userName.errors.maxlength"
+        >Max-length is
+        {{ userName.errors.maxlength.requiredLength }}</ng-container
+      >
+    </div>
+
+    <!-- email -->
+    <div class="signup-control">
+      <i class="fas fa-envelope"></i>
+      <input
+        type="email"
+        formControlName="email"
+        aria-describedby="emailHelp"
+        placeholder="Email"
+      />
+    </div>
+    <div class="message" *ngIf="email.touched && email.errors">
+      <ng-container *ngIf="email.errors.required"
+        >Email is required</ng-container
+      >
+      <ng-container *ngIf="email.errors.pattern"
+        >Email is incorrect</ng-container
+      >
+    </div>
+
+    <!-- password -->
+    <div class="signup-control">
+      <i class="fas fa-lock"></i>
+      <input type="text" formControlName="password" placeholder="Password" />
+    </div>
+    <div class="message" *ngIf="password.touched && password.errors">
+      <ng-container *ngIf="password.errors.required"
+        >Password is required</ng-container
+      >
+      <ng-container *ngIf="password.errors.pattern"
+        >Password is incorrect</ng-container
+      >
+    </div>
+
+    <!-- btn -->
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+    <p>Already have an account? <a routerLink="/login">Login here</a></p>
+  </form>
+</div>

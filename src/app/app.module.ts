@@ -17,11 +17,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CartComponent } from './components/screens/cart/cart.component';
 import { LimitToPipe } from './pipes/limit-to.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { ContactComponent } from './components/screens/contact/contact.component';
 import { AboutComponent } from './components/screens/about/about.component';
+import { LoginComponent } from './components/screens/login/login.component';
+import { SignupComponent } from './components/screens/signup/signup.component';
+import { ResetPasswordComponent } from './components/screens/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { AboutComponent } from './components/screens/about/about.component';
     LimitToPipe,
     ContactComponent,
     AboutComponent,
+    LoginComponent,
+    SignupComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +52,7 @@ import { AboutComponent } from './components/screens/about/about.component';
     NgbModule,
     NgxSpinnerModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

@@ -1,0 +1,47 @@
+<div class="container login">
+  <div class="login-img">
+    <img src="./../../../../assets/login-icon.webp" alt="" />
+  </div>
+  <form [formGroup]="loginForm">
+    <h2>Member Login</h2>
+    <!-- email -->
+    <div class="login-control">
+      <i class="fas fa-envelope"></i>
+      <input
+        type="email"
+        formControlName="email"
+        aria-describedby="emailHelp"
+        placeholder="Email"
+      />
+    </div>
+    <div class="message" *ngIf="email.touched && email.errors">
+      <ng-container *ngIf="email.errors.required"
+        >Email is required</ng-container
+      >
+      <ng-container *ngIf="email.errors.pattern"
+        >Email is incorrect</ng-container
+      >
+    </div>
+
+    <!-- password -->
+    <div class="login-control">
+      <i class="fas fa-lock"></i>
+      <input type="text" formControlName="password" placeholder="Password" />
+    </div>
+    <div class="message" *ngIf="password.touched && password.errors">
+      <ng-container *ngIf="password.errors.required"
+        >Password is required</ng-container
+      >
+      <ng-container *ngIf="password.errors.pattern"
+        >Password is incorrect</ng-container
+      >
+    </div>
+
+    <!-- btn -->
+    <button type="submit" class="btn btn-primary">Login</button>
+    <p>
+      <span>Demo Account</span><br />
+      Don't an account yet? <a routerLink="/signup">Sign up one right here</a>
+    </p>
+  </form>
+</div>

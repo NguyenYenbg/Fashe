@@ -12,27 +12,28 @@
       >
     </li>
     <li><a routerLink="/products" routerLinkActive="active">Shop</a></li>
-
-    <!-- <li *ngFor="let category of categories">
-      <a
-        routerLink="/products/category/{{ category }}"
-        routerLinkActive="active"
-        >{{ category }}</a
-      >
-    </li> -->
-
     <li><a routerLink="/cart" routerLinkActive="active">Cart</a></li>
     <li><a routerLink="/about" routerLinkActive="active">About</a></li>
     <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
   </ul>
 
   <div class="navbar_right">
-    <img src="" alt="" />
     <div class="navbar_right-cart" routerLink="cart">
       <i style="font-size: 30px" class="fas fa-cart-plus"></i>
       <div style="font-size: 10px" class="badge bg-danger">
         {{ totalItem }}
       </div>
+    </div>
+    <!-- <div class="navbar_right-img">
+      <img
+        src="https://scontent.fhan5-6.fna.fbcdn.net/v/t1.6435-9/144003394_481392229687996_6882795505903106698_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=frm4dkKMx9MAX9tTvUs&_nc_ht=scontent.fhan5-6.fna&oh=00_AT-_sYSZLhgjXTDt_7S3l37EmuUQ59dBRFyaKhxBQSXdyA&oe=62BB127A"
+        alt=""
+      />
+      <i class="fas fa-caret-down"></i>
+    </div> -->
+    <div class="navbar_right-login">
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/signup" routerLinkActive="active">Signup</a>
     </div>
   </div>
 </div>

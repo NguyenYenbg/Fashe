@@ -24,10 +24,41 @@
     }
   }
   &_right {
+    display: flex;
+    align-items: center;
     &-cart {
       color: white;
+      margin-right: 15px;
+      padding-right: 15px;
+      border-right: 2px solid #cacaca;
       & i {
         color: black;
+      }
+    }
+    &-img {
+      & img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 3px;
+      }
+      & i {
+        font-size: 20px;
+      }
+    }
+    &-login {
+      & a {
+        color: black;
+        font-size: 20px;
+        text-transform: capitalize;
+        margin-right: 15px;
+        &:hover {
+          color: #e65540;
+          text-decoration: none;
+        }
+        &.active {
+          color: #e65540;
+        }
       }
     }
   }
