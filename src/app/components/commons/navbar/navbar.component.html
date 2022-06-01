@@ -24,14 +24,34 @@
         {{ totalItem }}
       </div>
     </div>
-    <!-- <div class="navbar_right-img">
-      <img
-        src="https://scontent.fhan5-6.fna.fbcdn.net/v/t1.6435-9/144003394_481392229687996_6882795505903106698_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=frm4dkKMx9MAX9tTvUs&_nc_ht=scontent.fhan5-6.fna&oh=00_AT-_sYSZLhgjXTDt_7S3l37EmuUQ59dBRFyaKhxBQSXdyA&oe=62BB127A"
-        alt=""
-      />
-      <i class="fas fa-caret-down"></i>
-    </div> -->
-    <div class="navbar_right-login">
+
+    <!-- user -->
+    <div class="navbar_right-img" *ngIf="authServices.isLoginedIn()">
+      <div class="dropdown">
+        <div
+          class="user-avatar dropdown-toggle"
+          (click)="show = !show"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFEt4knJ4o5KMRUz5DfaUD3_J6J9ar9xoyFw&usqp=CAU"
+            alt=""
+          />
+        </div>
+        <div class="dropdown-menu" [class.show]="show">
+          <span class="dropdown-item cursor-pointer" (click)="logout()"
+            >Log out</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- login -->
+    <div class="navbar_right-login" *ngIf="!authServices.isLoginedIn()">
       <a routerLink="/login" routerLinkActive="active">Login</a>
       <a routerLink="/signup" routerLinkActive="active">Signup</a>
     </div>

@@ -9,17 +9,17 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginForm = new FormGroup({
-    email: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$'),
-    ]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.pattern('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'),
-    ]),
-    isRecievePromotions: new FormControl(false, []),
-  });
+  // loginForm = new FormGroup({
+  //   email: new FormControl('', [
+  //     Validators.required,
+  //     Validators.pattern('^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$'),
+  //   ]),
+  //   password: new FormControl('', [
+  //     Validators.required,
+  //     Validators.pattern('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'),
+  //   ]),
+  //   isRecievePromotions: new FormControl(false, []),
+  // });
 
   user = {
     email: '',
@@ -32,10 +32,19 @@ export class LoginComponent implements OnInit {
     console.log(this.user);
   }
 
-  get email() {
-    return this.loginForm.get('email');
+  onLogin() {
+    this.authService.login(this.user).subscribe((res) => {
+      if (res) {
+        this.router.navigate(['/home']);
+      }
+      console.log('res', res);
+    });
   }
-  get password() {
-    return this.loginForm.get('password');
+
+  demo() {
+    this.user = {
+      email: 'tracey.ramos@reqres.in',
+      password: '12345aA!',
+    };
   }
 }

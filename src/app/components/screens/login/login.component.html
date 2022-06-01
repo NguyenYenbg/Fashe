@@ -2,16 +2,19 @@
   <div class="login-img">
     <img src="./../../../../assets/login-icon.webp" alt="" />
   </div>
-  <form [formGroup]="loginForm">
+  <form ngForm #f="ngForm" (ngSubmit)="onLogin()">
     <h2>Member Login</h2>
     <!-- email -->
     <div class="login-control">
       <i class="fas fa-envelope"></i>
       <input
         type="email"
-        formControlName="email"
-        aria-describedby="emailHelp"
+        name="email"
+        [(ngModel)]="user.email"
         placeholder="Email"
+        #email="ngModel"
+        required
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
       />
     </div>
     <div class="message" *ngIf="email.touched && email.errors">
@@ -26,7 +29,15 @@
     <!-- password -->
     <div class="login-control">
       <i class="fas fa-lock"></i>
-      <input type="text" formControlName="password" placeholder="Password" />
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="user.password"
+        placeholder="Password"
+        #password="ngModel"
+        required
+        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$"
+      />
     </div>
     <div class="message" *ngIf="password.touched && password.errors">
       <ng-container *ngIf="password.errors.required"
@@ -38,9 +49,9 @@
     </div>
 
     <!-- btn -->
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button class="btn btn-primary" [disabled]="f.invalid">Login</button>
     <p>
-      <span>Demo Account</span><br />
+      <span (click)="demo()">Demo Account</span><br />
       Don't an account yet? <a routerLink="/signup">Sign up one right here</a>
     </p>
   </form>
