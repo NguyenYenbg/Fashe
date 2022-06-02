@@ -2,51 +2,67 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import jwtDecord from 'jwt-decode';
 import { tap, map } from 'rxjs/operators';
+import { config } from '../config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private baseURL = 'https://reqres.in';
   public user = null;
-  private savedTokenName = 'token';
 
-  constructor(private http: HttpClient) {
-    let token = localStorage.getItem(this.savedTokenName);
-    if (token) {
-      let decorded = jwtDecord(token);
-      this.user = decorded;
-      this.user.token = token;
+  constructor(private http: HttpClient) {}
+
+  isAuthenticated(): boolean {
+    if (this.user === null) {
+      let localUser = localStorage.getItem('user');
+      if (localUser) {
+        this.user = JSON.parse(localUser);
+      }
     }
-  }
-
-  login(user) {
-    return this.http.post(`${this.baseURL}/api/login`, user).pipe(
-      map(
-        (res) =>
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkphbmV0IiwiaXNBZG1pbiI6dHJ1ZSwiZW1haWwiOiJqYW5ldC53ZWF2ZXJAcmVxcmVzLmluIiwiaWF0IjoxNTE2MjM5MDIyLCJhdmF0YXIiOiJodHRwczovL3JlcXJlcy5pbi9pbWcvZmFjZXMvMi1pbWFnZS5qcGciLCJpZCI6Mn0.vhP2k3WolY7LDkHTmvvq6dEJk3WaiM-SWv2RdHkHsf0'
-      ),
-      tap((token: string) => {
-        let decorded = jwtDecord(token);
-        this.user = decorded;
-        this.user.token = token;
-        console.log(decorded);
-
-        localStorage.setItem(this.savedTokenName, token);
-      })
-    );
-  }
-
-  //ktra user ton tai k
-  isLoginedIn(): boolean {
-    //! convert ve bool, ! tra ve gia tri that
     return !!this.user;
   }
 
-  //logout
-  //xoa token, xoa obj user
+  logUserIn(user): void {
+    this.user = user;
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
   logout() {
-    this.user = null;
-    localStorage.removeItem(this.savedTokenName);
+    localStorage.removeItem('user');
+    window.location.reload();
+  }
+
+  login(user) {
+    return new Promise<void>((resolve, reject) => {
+      this.http
+        .post('https://conduit.productionready.io/api/users/login', {
+          user: user,
+        })
+        .subscribe(
+          (res: any) => {
+            this.logUserIn(res.user);
+            resolve();
+          },
+          (err: any) => {
+            reject(err);
+          }
+        );
+    });
+  }
+
+  signup(user) {
+    return new Promise<void>((resolve, reject) => {
+      this.http
+        .post('https://conduit.productionready.io/api/users', { user: user })
+        .subscribe(
+          (res: any) => {
+            this.logUserIn(res.user);
+            resolve();
+          },
+          (err: any) => {
+            reject(err);
+          }
+        );
+    });
   }
 }

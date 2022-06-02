@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -7,34 +10,39 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  signUpForm = new FormGroup({
-    userName: new FormControl('', [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(30),
-    ]),
-    email: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$'),
-    ]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.pattern('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'),
-    ]),
-    isRecievePromotions: new FormControl(false, []),
-  });
+  signupForm: FormGroup;
+  isInvalidInput: boolean = null;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    public authService: AuthService,
+    private toastr: ToastrService
+  ) {}
 
-  ngOnInit(): void {}
-
-  get userName() {
-    return this.signUpForm.get('userName');
+  ngOnInit(): void {
+    this.signupForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+    });
   }
-  get email() {
-    return this.signUpForm.get('email');
-  }
-  get password() {
-    return this.signUpForm.get('password');
+
+  signUp(): void {
+    this.authService
+      .signup(this.signupForm.value)
+      .then(() => {
+        this.isInvalidInput = false;
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 2000);
+        this.toastr.success('Successful sign up!');
+      })
+      .catch(() => {
+        this.isInvalidInput = true;
+        this.toastr.warning('Incorrect input. Please try again!');
+      });
   }
 }

@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  show = false;
-  showDropDown;
+  showDropdown: boolean = false;
+  userName: string = '';
   public totalItem: number = 0;
+
   constructor(
-    private productService: ProductService,
     private cartService: CartService,
     public authServices: AuthService,
     private router: Router
@@ -24,12 +24,13 @@ export class NavbarComponent implements OnInit {
     this.cartService.getProducts().subscribe((res) => {
       this.totalItem = res.length;
     });
-    this.showDropDown = true;
+    if (this.authServices.isAuthenticated()) {
+      let localUser = JSON.parse(localStorage.getItem('user'));
+      this.userName = localUser.username;
+    }
   }
 
   logout() {
-    this.show = false;
     this.authServices.logout();
-    this.router.navigateByUrl('/'); //tu dong ve home
   }
 }

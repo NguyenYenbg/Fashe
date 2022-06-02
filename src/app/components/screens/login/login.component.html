@@ -1,29 +1,28 @@
-<div class="container login">
+<div class="container login" *ngIf="!authService.isAuthenticated()">
   <div class="login-img">
     <img src="./../../../../assets/login-icon.webp" alt="" />
   </div>
-  <form ngForm #f="ngForm" (ngSubmit)="onLogin()">
+  <form [formGroup]="loginForm">
     <h2>Member Login</h2>
     <!-- email -->
     <div class="login-control">
       <i class="fas fa-envelope"></i>
       <input
         type="email"
-        name="email"
-        [(ngModel)]="user.email"
-        placeholder="Email"
-        #email="ngModel"
+        placeholder="Your email address"
+        formControlName="email"
+        autocomplete="off"
         required
-        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        [(ngModel)]="email"
       />
     </div>
-    <div class="message" *ngIf="email.touched && email.errors">
-      <ng-container *ngIf="email.errors.required"
-        >Email is required</ng-container
-      >
-      <ng-container *ngIf="email.errors.pattern"
-        >Email is incorrect</ng-container
-      >
+    <div
+      class="message"
+      *ngIf="
+        loginForm.controls.email.invalid && loginForm.controls.email.touched
+      "
+    >
+      * Email is required
     </div>
 
     <!-- password -->
@@ -31,25 +30,31 @@
       <i class="fas fa-lock"></i>
       <input
         type="password"
-        name="password"
-        [(ngModel)]="user.password"
         placeholder="Password"
-        #password="ngModel"
+        formControlName="password"
+        autocomplete="off"
         required
-        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$"
+        [(ngModel)]="password"
       />
     </div>
-    <div class="message" *ngIf="password.touched && password.errors">
-      <ng-container *ngIf="password.errors.required"
-        >Password is required</ng-container
-      >
-      <ng-container *ngIf="password.errors.pattern"
-        >Password is incorrect</ng-container
-      >
+    <div
+      class="message"
+      *ngIf="
+        loginForm.controls.email.invalid && loginForm.controls.password.touched
+      "
+    >
+      * Password is required
     </div>
 
     <!-- btn -->
-    <button class="btn btn-primary" [disabled]="f.invalid">Login</button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="loginForm.invalid"
+      (click)="login()"
+    >
+      Login
+    </button>
     <p>
       <span (click)="demo()">Demo Account</span><br />
       Don't an account yet? <a routerLink="/signup">Sign up one right here</a>

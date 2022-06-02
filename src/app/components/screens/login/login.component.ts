@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -9,42 +10,42 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  // loginForm = new FormGroup({
-  //   email: new FormControl('', [
-  //     Validators.required,
-  //     Validators.pattern('^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$'),
-  //   ]),
-  //   password: new FormControl('', [
-  //     Validators.required,
-  //     Validators.pattern('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'),
-  //   ]),
-  //   isRecievePromotions: new FormControl(false, []),
-  // });
+  email;
+  password;
 
-  user = {
-    email: '',
-    password: '',
-  };
-
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
+  isInvalidInput: boolean = null;
+  loginForm: FormGroup;
 
   ngOnInit(): void {
-    console.log(this.user);
-  }
-
-  onLogin() {
-    this.authService.login(this.user).subscribe((res) => {
-      if (res) {
-        this.router.navigate(['/home']);
-      }
-      console.log('res', res);
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required),
     });
   }
 
+  login(): void {
+    this.authService
+      .login(this.loginForm.value)
+      .then(() => {
+        this.isInvalidInput = false;
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 3000);
+        this.toastr.success('Successful login!');
+      })
+      .catch(() => {
+        this.isInvalidInput = true;
+        this.toastr.warning('Incorrect input. Please try again!');
+      });
+  }
+
   demo() {
-    this.user = {
-      email: 'tracey.ramos@reqres.in',
-      password: '12345aA!',
-    };
+    this.email = 'yennt44@gmail.com';
+    this.password = '11111111';
   }
 }

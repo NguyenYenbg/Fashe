@@ -26,24 +26,26 @@
     </div>
 
     <!-- user -->
-    <div class="navbar_right-img" *ngIf="authServices.isLoginedIn()">
+    <div class="navbar_right-img">
       <div class="dropdown">
         <div
           class="user-avatar dropdown-toggle"
-          (click)="show = !show"
+          *ngIf="authServices.isAuthenticated()"
+          [class.show]="showDropdown"
+          (click)="showDropdown = !showDropdown"
           type="button"
           id="dropdownMenuButton"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFEt4knJ4o5KMRUz5DfaUD3_J6J9ar9xoyFw&usqp=CAU"
-            alt=""
-          />
+          <img src="./../../../../assets/user.jpg" alt="" />
         </div>
-        <div class="dropdown-menu" [class.show]="show">
-          <span class="dropdown-item cursor-pointer" (click)="logout()"
+        <div class="dropdown-menu" [class.show]="showDropdown">
+          <span
+            class="dropdown-item cursor-pointer"
+            *ngIf="authServices.isAuthenticated()"
+            (click)="logout()"
             >Log out</span
           >
         </div>
@@ -51,9 +53,19 @@
     </div>
 
     <!-- login -->
-    <div class="navbar_right-login" *ngIf="!authServices.isLoginedIn()">
-      <a routerLink="/login" routerLinkActive="active">Login</a>
-      <a routerLink="/signup" routerLinkActive="active">Signup</a>
+    <div class="navbar_right-login">
+      <a
+        routerLink="/login"
+        *ngIf="!authServices.isAuthenticated()"
+        routerLinkActive="active"
+        >Login</a
+      >
+      <a
+        routerLink="/signup"
+        *ngIf="!authServices.isAuthenticated()"
+        routerLinkActive="active"
+        >Signup</a
+      >
     </div>
   </div>
 </div>
