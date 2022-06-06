@@ -18,38 +18,81 @@
   </ul>
 
   <div class="navbar_right">
-    <div class="navbar_right-cart" routerLink="cart">
-      <i style="font-size: 30px" class="fas fa-cart-plus"></i>
-      <div style="font-size: 10px" class="badge bg-danger">
-        {{ totalItem }}
+    <div class="header__cart">
+      <div class="header__cart-wrap">
+        <i class="header__cart-icon fas fa-shopping-cart"></i>
+        <span class="header__cart-notice">{{ totalItem }}</span>
+
+        <!-- no cart: header__cart-list--no-cart -->
+        <div class="header__cart-list bright-connect">
+          <div class="" *ngIf="products.length == 0">
+            <img
+              src="./../../../../assets/no_cart.png"
+              alt=""
+              class="header__cart-no-cart-img"
+            />
+            <div class="header__cart-list-no-cart-msg">Your cart is empty!</div>
+          </div>
+
+          <!-- have cart -->
+          <div class="" *ngIf="products.length != 0">
+            <h4 class="header__cart-heading">Product added</h4>
+            <ul class="header__cart-list-item">
+              <li class="header__cart-item" *ngFor="let item of products">
+                <img src="{{ item.image }}" alt="" class="header__cart-img" />
+                <div class="header__cart-item-info">
+                  <div class="header__cart-item-head">
+                    <h5 class="header__cart-item-name">
+                      {{ item.title }}
+                    </h5>
+                    <div class="header__cart-item-pice-wrap">
+                      <span class="header__cart-item-price">{{
+                        item.price | currency: "USD"
+                      }}</span>
+                      <span class="header__cart-item-multiply">X</span>
+                      <span class="header__cart-item-quantity">{{
+                        item.quantity
+                      }}</span>
+                    </div>
+                  </div>
+                  <div class="header__cart-item-body">
+                    <span class="header__cart-item-discription">Phân loại</span>
+                    <span
+                      class="header__cart-item-delete"
+                      (click)="removeItem(item)"
+                      >Del</span
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a
+              routerLink="/cart"
+              class="header__cart-view-cart btn btn--primary"
+              >Go to cart</a
+            >
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- user -->
-    <div class="navbar_right-img">
-      <div class="dropdown">
-        <div
-          class="user-avatar dropdown-toggle"
-          *ngIf="authServices.isAuthenticated()"
-          [class.show]="showDropdown"
-          (click)="showDropdown = !showDropdown"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <img src="./../../../../assets/user.jpg" alt="" />
-        </div>
-        <div class="dropdown-menu" [class.show]="showDropdown">
-          <span
-            class="dropdown-item cursor-pointer"
-            *ngIf="authServices.isAuthenticated()"
-            (click)="logout()"
-            >Log out</span
+    <div class="navbar_right-img header__navbar-item header__navbar-user">
+      <img
+        *ngIf="authServices.isAuthenticated()"
+        src="./../../../../assets/user.jpg"
+        alt=""
+      />
+      <ul class="header__navbar-user-menu bright-connect">
+        <li class="header__navbar-user-item">
+          <a (click)="logout()" *ngIf="authServices.isAuthenticated()"
+            >Log out</a
           >
-        </div>
-      </div>
+        </li>
+        <li class="header__navbar-user-item">
+          <a>My Acount</a>
+        </li>
+      </ul>
     </div>
 
     <!-- login -->

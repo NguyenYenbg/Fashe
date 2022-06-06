@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   showDropdown: boolean = false;
   userName: string = '';
   public totalItem: number = 0;
+  public products: any = [];
 
   constructor(
     private cartService: CartService,
@@ -23,6 +24,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getProducts().subscribe((res) => {
       this.totalItem = res.length;
+      this.products = res;
     });
     if (this.authServices.isAuthenticated()) {
       let localUser = JSON.parse(localStorage.getItem('user'));
@@ -32,5 +34,9 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.authServices.logout();
+  }
+
+  removeItem(item: any) {
+    this.cartService.removeCartItem(item);
   }
 }
