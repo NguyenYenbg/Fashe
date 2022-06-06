@@ -12,20 +12,34 @@
         <p class="product-detail__category">Category: {{ product.category }}</p>
 
         <!-- number product -->
-        <div class="product-detail__number">
+        <!-- <div class="product-detail__number">
           <button>
-            <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+            <i
+              class="fs-12 fa fa-minus"
+              aria-hidden="true"
+              (click)="minusPreduct()"
+            ></i>
           </button>
-          <input type="number" name="num-product" value="1" />
+          <input [(ngModel)]="numberProduct" type="text" name="num-product" />
           <button>
-            <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+            <i
+              class="fs-12 fa fa-plus"
+              aria-hidden="true"
+              (click)="plusProduct()"
+            ></i>
           </button>
-        </div>
+        </div> -->
 
         <!-- btn Add to Cart -->
         <div class="product-detail__add">
-          <button>Add to Cart</button>
+          <button (click)="addtocart(product)" routerLink="/cart">
+            Buy now
+          </button>
         </div>
+
+        <!-- <div class="product-detail__add">
+          <button routerLink="">Buy now</button>
+        </div> -->
 
         <ngb-accordion [closeOthers]="true" activeIds="static-1">
           <ngb-panel id="static-1" title="Description:">

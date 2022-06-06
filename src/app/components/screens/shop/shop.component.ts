@@ -56,9 +56,6 @@ export class ShopComponent implements OnInit {
       item.title.toLocaleLowerCase().includes(value.trim().toLocaleLowerCase())
     );
   }
-  addtocart(item: any) {
-    this.cartService.addtoCart(item);
-  }
   filter(category: string) {
     this.filterCategory = this.productList.filter((a: any) => {
       if (a.category == category || category == '') {
