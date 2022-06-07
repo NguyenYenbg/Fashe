@@ -58,3 +58,10 @@
     }
   }
 }
+
+// responsive
+@media only screen and (max-width: 767px) {
+  .contact__item:first-child h6 {
+    margin-bottom: 45px;
+  }
+}

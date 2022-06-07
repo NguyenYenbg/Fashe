@@ -25,6 +25,7 @@ import { AboutComponent } from './components/screens/about/about.component';
 import { LoginComponent } from './components/screens/login/login.component';
 import { SignupComponent } from './components/screens/signup/signup.component';
 import { ResetPasswordComponent } from './components/screens/reset-password/reset-password.component';
+import { AboutMeComponent } from './components/screens/about-me/about-me.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ResetPasswordComponent } from './components/screens/reset-password/rese
     LoginComponent,
     SignupComponent,
     ResetPasswordComponent,
+    AboutMeComponent,
   ],
   imports: [
     BrowserModule,

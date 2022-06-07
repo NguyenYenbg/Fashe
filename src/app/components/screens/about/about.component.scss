@@ -30,6 +30,7 @@
     justify-content: space-between;
     & img {
       width: 30%;
+      object-fit: cover;
     }
     &-desc {
       width: 65%;

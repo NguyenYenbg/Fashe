@@ -5,12 +5,14 @@
   }
 }
 .carousel-caption {
+  z-index: 0;
   button {
     background-color: #fff;
     color: #000;
     border-radius: 23px;
     padding: 7px 20px;
     margin-bottom: 20px;
+
     &:hover {
       background-color: #e65540;
       color: #fff;
@@ -148,6 +150,27 @@
           color: #0056b3;
         }
       }
+    }
+  }
+}
+
+//responsive
+@media only screen and (max-width: 1023px) {
+  .category__list {
+    flex-wrap: wrap;
+  }
+  .category__item {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .collection__view:first-child .collection__view-content {
+    & h4 {
+      font-size: 20px;
+    }
+    & h3 {
+      font-size: 30px;
     }
   }
 }

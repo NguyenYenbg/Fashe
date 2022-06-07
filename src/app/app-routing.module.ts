@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AboutMeComponent } from './components/screens/about-me/about-me.component';
 import { AboutComponent } from './components/screens/about/about.component';
 import { CartComponent } from './components/screens/cart/cart.component';
 import { ContactComponent } from './components/screens/contact/contact.component';
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'resetPassword',
     component: ResetPasswordComponent,
+  },
+  {
+    path: 'aboutme',
+    component: AboutMeComponent,
   },
   {
     path: '**',
