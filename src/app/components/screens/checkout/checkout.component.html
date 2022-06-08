@@ -1,26 +1,104 @@
 <div class="container checkout">
   <div class="pay">
     <h2>Billing Information</h2>
-    <form>
+    <form [formGroup]="checkoutForm">
+      <!-- full name -->
       <div class="form-group">
         <label>Full name <span>*</span></label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" formControlName="full_name" />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="full_name.touched && full_name.errors"
+        >
+          <ng-container *ngIf="full_name.errors.required"
+            >Full name is required</ng-container
+          >
+          <ng-container *ngIf="full_name.errors.minlength"
+            >Min-length is
+            {{ full_name.errors.minlength.requiredLength }}</ng-container
+          >
+          <ng-container *ngIf="full_name.errors.maxlength"
+            >Max-length is
+            {{ full_name.errors.maxlength.requiredLength }}</ng-container
+          >
+        </div>
       </div>
+
+      <!-- address -->
       <div class="form-group">
         <label>Address <span>*</span></label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" formControlName="address" />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="address.touched && address.errors"
+        >
+          <ng-container *ngIf="address.errors.required"
+            >Address is required</ng-container
+          >
+          <ng-container *ngIf="address.errors.minlength"
+            >Min-length is
+            {{ address.errors.minlength.requiredLength }}</ng-container
+          >
+          <ng-container *ngIf="address.errors.maxlength"
+            >Max-length is
+            {{ address.errors.maxlength.requiredLength }}</ng-container
+          >
+        </div>
       </div>
+
+      <!-- city -->
       <div class="form-group">
         <label>Province / City <span>*</span></label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" formControlName="city" />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="city.touched && city.errors"
+        >
+          <ng-container *ngIf="city.errors.required"
+            >City is required</ng-container
+          >
+        </div>
       </div>
+
+      <!-- phone -->
       <div class="form-group">
         <label>Phone number <span>*</span></label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" formControlName="phone" />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="phone.touched && phone.errors"
+        >
+          <ng-container *ngIf="phone.errors.required"
+            >Phone is required</ng-container
+          >
+          <ng-container *ngIf="phone.errors.pattern"
+            >Phone is incorrect</ng-container
+          >
+        </div>
       </div>
+
+      <!-- email -->
       <div class="form-group">
         <label>Email address <span>*</span></label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" formControlName="email" />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="email.touched && email.errors"
+        >
+          <ng-container *ngIf="email.errors.required"
+            >Email is required</ng-container
+          >
+          <ng-container *ngIf="email.errors.pattern"
+            >Email is incorrect</ng-container
+          >
+        </div>
+
+        <!-- note -->
       </div>
       <div class="form-group">
         <label>Order notes (optional)</label>
