@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 3000);
-        this.toastr.success('Successful login!');
+        this.toastr.success('Logged in successfully!');
       })
       .catch(() => {
         this.isInvalidInput = true;

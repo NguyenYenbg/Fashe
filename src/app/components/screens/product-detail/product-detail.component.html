@@ -1,60 +1,106 @@
 <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
 <div *ngIf="product">
-  <div class="path">
-    Shop > Products > {{ product.category }} > {{ product.title }}
-  </div>
   <div class="container">
     <div class="product">
       <img src="{{ product.image }}" alt="" />
       <div class="product-detail">
-        <h2>{{ product.title }}</h2>
-        <h3>Price: {{ product.price | currency: "USD" }}</h3>
-        <p class="product-detail__category">Category: {{ product.category }}</p>
+        <h2><span>Favorite</span> {{ product.title }}</h2>
+        <div class="product-detail__evaluate">
+          No Reviews yet <span>0 Sold</span>
+        </div>
+        <div class="product-detail__price">
+          <span>{{ product.price | currency: "USD" }} </span>
+          <span>{{ priceRate | currency: "USD" }}</span>
+          <span>{{ product.rating["rate"] }}% REDUCE</span>
+        </div>
+        <div class="product-detail__reduce">
+          <span>Shop Discount Code</span>
+          <span>5% REDUCE </span>
+          <span>8% REDUCE </span>
+          <span>20% REDUCE </span>
+        </div>
+        <div class="product-detail__free">
+          <span>Promotion Combo</span>
+          <span>Buy 3 & get 3% off</span>
+        </div>
+        <div class="product-detail__delivery">
+          <span>Transport</span>
+          <div class="product-detail__delivery-item">
+            <i class="fas fa-car"> Free shipping</i>
+            <div>Free shipping for orders above $50</div>
+            <i class="fas fa-plane-departure"> Shipping From</i
+            ><span>Overseas to Hanoi</span>
+            <div>Transport fee <span>$10</span></div>
+          </div>
+        </div>
 
         <!-- number product -->
-        <!-- <div class="product-detail__number">
-          <button>
-            <i
-              class="fs-12 fa fa-minus"
-              aria-hidden="true"
-              (click)="minusPreduct()"
-            ></i>
-          </button>
-          <input [(ngModel)]="numberProduct" type="text" name="num-product" />
-          <button>
-            <i
-              class="fs-12 fa fa-plus"
-              aria-hidden="true"
-              (click)="plusProduct()"
-            ></i>
-          </button>
-        </div> -->
+        <div class="product-detail__number">
+          <span>Amount</span>
+          <div class="product-detail__number-item">
+            <button>
+              <i
+                class="fs-12 fa fa-minus"
+                aria-hidden="true"
+                (click)="minusPreduct()"
+              ></i>
+            </button>
+            <input [(ngModel)]="numberProduct" type="text" name="num-product" />
+            <button>
+              <i
+                class="fs-12 fa fa-plus"
+                aria-hidden="true"
+                (click)="plusProduct()"
+              ></i>
+            </button>
+          </div>
+          <span>{{ product.rating["count"] }} products available</span>
+        </div>
 
         <!-- btn Add to Cart -->
         <div class="product-detail__add">
+          <button class="btn-addtocart">
+            <i class="fas fa-cart-plus"></i> Add to cart
+          </button>
           <button (click)="addtocart(product)" routerLink="/cart">
             Buy now
           </button>
         </div>
-
-        <!-- <div class="product-detail__add">
-          <button routerLink="">Buy now</button>
-        </div> -->
-
-        <ngb-accordion [closeOthers]="true" activeIds="static-1">
-          <ngb-panel id="static-1" title="Description:">
-            <ng-template ngbPanelContent>
-              {{ product.description }}
-            </ng-template>
-          </ngb-panel>
-        </ngb-accordion>
-
-        <div class="back-products">
-          <button class="btn btn-link pl-0" routerLink="../">
-            Back to Products
-          </button>
-        </div>
       </div>
+    </div>
+
+    <!-- <ngb-accordion [closeOthers]="true" activeIds="static-1">
+      <ngb-panel id="static-1" title="Description:">
+        <ng-template ngbPanelContent>
+          {{ product.description }}
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion> -->
+    <div class="product-desc">
+      <h5>PRODUCT DETAILS</h5>
+      <div>
+        <p>Category: {{ product.category }}</p>
+        <p>
+          Category path: Shop > Products > {{ product.category }} >
+          {{ product.title }}
+        </p>
+        <p>Material: Other</p>
+        <p>Warehouse: 9999</p>
+        <p>Sent from: Foreign</p>
+      </div>
+    </div>
+
+    <div class="product-desc">
+      <h5>PRODUCT DESCRIPTION</h5>
+      <div>
+        <p>{{ product.description }}</p>
+      </div>
+    </div>
+
+    <div class="back-products">
+      <button class="btn btn-link pl-0" routerLink="../">
+        Back to Products
+      </button>
     </div>
   </div>
 </div>

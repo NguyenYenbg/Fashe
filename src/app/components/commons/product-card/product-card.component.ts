@@ -16,7 +16,6 @@ export class ProductCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
     let rate = (this.data.price * this.data.rating['rate']) / 100;
     this.priceRate = this.data.price - rate;
   }

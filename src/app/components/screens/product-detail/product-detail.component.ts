@@ -11,7 +11,8 @@ import { SingleProduct } from 'src/app/_models/single-product';
 })
 export class ProductDetailComponent implements OnInit {
   product: any;
-  //numberProduct: number = 1;
+  numberProduct: number = 1;
+  priceRate: number;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -23,18 +24,20 @@ export class ProductDetailComponent implements OnInit {
     if (id) {
       this.productService.getProduct(id).subscribe((res) => {
         this.product = res;
+        let rate = (this.product.price * this.product.rating['rate']) / 100;
+        this.priceRate = this.product.price - rate;
       });
     }
   }
 
-  // plusProduct() {
-  //   this.numberProduct += 1;
-  // }
-  // minusPreduct() {
-  //   if (this.numberProduct > 1) {
-  //     this.numberProduct -= 1;
-  //   }
-  // }
+  plusProduct() {
+    this.numberProduct += 1;
+  }
+  minusPreduct() {
+    if (this.numberProduct > 1) {
+      this.numberProduct -= 1;
+    }
+  }
 
   addtocart(item: any) {
     this.cartService.addtoCart(item);
