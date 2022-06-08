@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +12,16 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit {
   public products: any = [];
   public grandTotal!: number;
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    public authServices: AuthService,
+    private router: Router,
+    config: NgbModalConfig,
+    private modalService: NgbModal
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit(): void {
     this.cartService.getProducts().subscribe((res) => {
@@ -24,5 +36,17 @@ export class CartComponent implements OnInit {
   }
   emptycart() {
     this.cartService.removeAllCart();
+  }
+
+  gotoLogin() {
+    this.router.navigateByUrl('/login');
+  }
+
+  open(content) {
+    if (!this.authServices.isAuthenticated()) {
+      this.modalService.open(content);
+    } else {
+      this.router.navigateByUrl('/checkout');
+    }
   }
 }

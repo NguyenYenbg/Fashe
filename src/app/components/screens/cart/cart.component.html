@@ -49,9 +49,43 @@
                   Shop More
                 </button>
               </td>
-              <td><button class="btn btn-success">Checkout</button></td>
               <td>
-                <strong>Grand Total: ${{ grandTotal }}</strong>
+                <ng-template #content let-c="close" let-d="dismiss">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">
+                      Checkout!
+                    </h4>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      aria-label="Close"
+                      (click)="d('Cross click')"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      You need to login to checkout ->
+                      <button class="btn btn-warning" (click)="gotoLogin()">
+                        Login
+                      </button>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-dark"
+                      (click)="c('Save click')"
+                    >
+                      OK
+                    </button>
+                  </div>
+                </ng-template>
+                <button (click)="open(content)" class="btn btn-success">
+                  Checkout
+                </button>
+              </td>
+              <td>
+                <strong>Grand Total: {{ grandTotal | currency: "USD" }}</strong>
               </td>
             </tr>
           </tbody>

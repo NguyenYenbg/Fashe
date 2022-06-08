@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutMeComponent } from './components/screens/about-me/about-me.component';
 import { AboutComponent } from './components/screens/about/about.component';
 import { CartComponent } from './components/screens/cart/cart.component';
+import { CheckoutComponent } from './components/screens/checkout/checkout.component';
 import { ContactComponent } from './components/screens/contact/contact.component';
 import { HomeComponent } from './components/screens/home/home.component';
 import { LoginComponent } from './components/screens/login/login.component';
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'aboutme',
     component: AboutMeComponent,
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
   },
   {
     path: '**',
