@@ -9,14 +9,19 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductCardComponent implements OnInit {
   @Input('data') data: any;
+  priceRate: number;
   constructor(
     private cartService: CartService,
     private toastr: ToastrService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.data);
+    let rate = (this.data.price * this.data.rating['rate']) / 100;
+    this.priceRate = this.data.price - rate;
+  }
   addtocart(item: any) {
     this.cartService.addtoCart(item);
-    this.toastr.success('You have successfully added the product to your cart');
+    this.toastr.success('You have successfully added !!!');
   }
 }

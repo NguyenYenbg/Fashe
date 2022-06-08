@@ -60,23 +60,21 @@
                       class="btn-close"
                       aria-label="Close"
                       (click)="d('Cross click')"
-                    ></button>
+                    >
+                      <i class="fas fa-times"></i>
+                    </button>
                   </div>
                   <div class="modal-body">
-                    <p>
-                      You need to login to checkout ->
-                      <button class="btn btn-warning" (click)="gotoLogin()">
-                        Login
-                      </button>
-                    </p>
+                    <p>You need to login to checkout.</p>
                   </div>
                   <div class="modal-footer">
                     <button
                       type="button"
-                      class="btn btn-outline-dark"
+                      class="btn btn-warning"
                       (click)="c('Save click')"
+                      routerLink="/login"
                     >
-                      OK
+                      Login
                     </button>
                   </div>
                 </ng-template>
@@ -99,12 +97,11 @@
   <div class="container">
     <div class="center">
       <img
-        src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+        src="https://bizweb.dktcdn.net/100/323/328/themes/673538/assets/empty-cart.png?1533272168849"
         alt=""
       />
-      <h4>Your cart is empty!</h4>
-      <h6>Add item to it now</h6>
-      <button routerLink="/products" class="btn btn-primary">Shop Now</button>
+      <h5>Add item to it now</h5>
+      <button routerLink="/products" class="cart-empty">Shop Now</button>
     </div>
   </div>
 </ng-container>

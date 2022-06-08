@@ -4,4 +4,38 @@
   <button (click)="addtocart(data)">Add to cart</button>
 </div>
 <h5 routerLink="/products/{{ data.id }}">{{ data.title }}</h5>
-<p>{{ data.price | currency: "USD" }}</p>
+<div class="product-item__price">
+  <div class="product-item__price-old">
+    {{ data.price | currency: "USD" }}
+  </div>
+  <div class="product-item__price-current">
+    {{ priceRate | currency: "USD" }}
+  </div>
+</div>
+<div class="product-item__action">
+  <span class="product-item__like product-item__like--liked">
+    <i class="product-item__like-icon-empty far fa-heart"></i>
+    <i class="product-item__like-icon-full fas fa-heart"></i>
+  </span>
+  <div class="product-item__raring">
+    <i class="product-item__star--gold fas fa-star"></i>
+    <i class="product-item__star--gold fas fa-star"></i>
+    <i class="product-item__star--gold fas fa-star"></i>
+    <i class="product-item__star--gold fas fa-star"></i>
+    <i class="fas fa-star"></i>
+  </div>
+  <div class="product-item__sold">{{ data.rating["count"] }} rest</div>
+</div>
+<div class="product-item__origin">
+  <div class="product-item__brand">Whoo</div>
+  <div class="product-item__origin-name">Japan</div>
+</div>
+
+<div class="product-item__favorite">
+  <i class="fas fa-check"></i>
+  <span>Favorite</span>
+</div>
+<div class="product-item__sale-off">
+  <span class="product-item__sale-off-percent">{{ data.rating["rate"] }}%</span>
+  <span class="product-item__sale-off-lable">Reduce</span>
+</div>

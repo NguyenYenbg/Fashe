@@ -74,9 +74,10 @@
       flex-wrap: wrap;
     }
     &-item {
-      width: calc(33.3333% - 30px);
-      box-shadow: 2px 2px 7px #abf0ea;
+      width: calc(25% - 45px);
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
       margin: 15px;
+      position: relative;
       &--img {
         position: relative;
         & img {
@@ -159,8 +160,18 @@
 }
 
 // responsive
+@media only screen and (max-width: 1023px) {
+  .shop__body-item {
+    width: calc(33.3333% - 30px);
+  }
+}
 @media only screen and (max-width: 767px) {
   .shop__body-item {
     width: calc(50% - 30px);
+  }
+}
+@media only screen and (max-width: 576px) {
+  .shop__body-item {
+    width: calc(100% - 30px);
   }
 }

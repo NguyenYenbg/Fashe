@@ -40,9 +40,9 @@
   margin: 30px 0px;
 }
 
-h4,
-h6 {
+h5 {
   font-weight: 400;
+  margin-bottom: 0;
 }
 
 .center {
@@ -67,4 +67,17 @@ h6 {
   font-weight: 400;
   padding: 12px 72px;
   border-radius: 3px !important;
+}
+.cart-empty {
+  background-color: #e65540;
+  color: #fff;
+  border-radius: 3px;
+  padding: 7px 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  &:hover {
+    background-color: #be341e;
+    color: #fff;
+  }
 }
