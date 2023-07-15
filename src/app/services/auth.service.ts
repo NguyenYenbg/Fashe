@@ -28,6 +28,7 @@ export class AuthService {
   }
 
   logout() {
+    this.user = null;
     localStorage.removeItem('user');
     window.location.reload();
   }
@@ -40,6 +41,8 @@ export class AuthService {
         })
         .subscribe(
           (res: any) => {
+            console.log(res);
+
             this.logUserIn(res.user);
             resolve();
           },
@@ -56,7 +59,8 @@ export class AuthService {
         .post('https://conduit.productionready.io/api/users', { user: user })
         .subscribe(
           (res: any) => {
-            this.logUserIn(res.user);
+            console.log(res);
+            // this.logUserIn(res.user);
             resolve();
           },
           (err: any) => {
