@@ -1,10 +1,7 @@
 <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
 <div class="shop">
   <div class="shop__header">
-    <img
-      src="https://preview.colorlib.com/theme/fashe/images/xheading-pages-02.jpg.pagespeed.ic.GkG7EKvIlv.webp"
-      alt=""
-    />
+    <img src="./../../../../assets/product/woman.webp" alt="" />
     <div class="shop__header-content">
       <h3>Product</h3>
       <p>New Arrivals Products Collection 2022</p>
@@ -68,7 +65,7 @@
       <ng-container
         *ngFor="
           let item of filterCategory
-            | limitTo: searchKey:'title'
+            | limitTo : searchKey : 'title'
             | paginate
               : { itemsPerPage: 8, currentPage: page, totalItems: totalLength }
         "
