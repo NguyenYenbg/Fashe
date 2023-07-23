@@ -28,9 +28,9 @@
                 <img style="width: 120px" src="{{ item.image }}" alt="" />
               </td>
               <td>{{ item.title }}</td>
-              <th style="width: 12%">{{ item.price | currency: "USD" }}</th>
+              <th style="width: 12%">{{ item.price | currency : "USD" }}</th>
               <td style="width: 12%">{{ item.quantity }}</td>
-              <td style="width: 12%">{{ item.total | currency: "USD" }}</td>
+              <td style="width: 12%">{{ item.total | currency : "USD" }}</td>
               <td>
                 <button (click)="removeItem(item)" class="btn btn-danger">
                   <i class="fas fa-trash-alt"></i>
@@ -83,7 +83,9 @@
                 </button>
               </td>
               <td>
-                <strong>Grand Total: {{ grandTotal | currency: "USD" }}</strong>
+                <strong
+                  >Grand Total: {{ grandTotal | currency : "USD" }}</strong
+                >
               </td>
             </tr>
           </tbody>
@@ -96,10 +98,7 @@
 <ng-container *ngIf="products.length == 0">
   <div class="container">
     <div class="center">
-      <img
-        src="https://bizweb.dktcdn.net/100/323/328/themes/673538/assets/empty-cart.png?1533272168849"
-        alt=""
-      />
+      <img src="./../../../../assets/product/empty-cart.webp" alt="" />
       <h5>Add item to it now</h5>
       <button routerLink="/products" class="cart-empty">Shop Now</button>
     </div>
